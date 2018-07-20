@@ -5,4 +5,8 @@
   <input type="submit" value="Modifier le livre" />
 <% end %>
 
+<%= form_tag "/books/#{@book.id}", method: "delete" do %>
+  <input type="submit" value="Supprimer le livre" />
+<% end %>
+
 <p> <a href="/books">Retourner à l'index</a> </p>
