@@ -10,17 +10,25 @@
   </head>
 
   <body>
-    <% if @current_user %>
-      <p> <a href="/users/logout">Se déconnecter</a> </p>
-    <% else %>
-      <p> <a href="/users/login">S'identifier</a> </p>
-    <% end %>
+    <div id="dis-connect">
+      <% if @current_user %>
+        <p> <a href="/users/logout">Se déconnecter</a> </p>
+      <% else %>
+        <p> <a href="/users/login">S'identifier</a> </p>
+      <% end %>
+    </div>
 
-    <div>
-      <%= flash[:success] %>
-      <%= flash[:failure] %>
-      <%= flash[:info] %>
-      <%= flash[:error] %>
+    <div class="flash">
+      <div class="wrong">
+        <%= flash[:failure] %>
+        <%= flash[:error] %>
+      </div>
+      <div class="right">
+        <%= flash[:success] %>
+      </div>
+      <div class="info">
+        <%= flash[:info] %>
+      </div>
     </div>
 
     <%= yield %>

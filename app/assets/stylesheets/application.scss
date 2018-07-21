@@ -15,8 +15,44 @@
  */
 
 body {
+  font-family: "verdana", "sans-serif";
   background-image: url(asset-path("background_books.png"));
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
+}
+
+.flash {
+  font-size: small;
+}
+
+.info {
+  color: blue;
+}
+
+.right {
+  color: green;
+}
+
+.wrong {
+  color: red;
+}
+
+#dis-connect {
+  font-weight: bold;
+  background-color: grey;
+  padding: 1%;
+}
+
+#dis-connect a {
+  color: orange;
+  text-decoration: none;
+}
+
+#dis-connect a:hover {
+  color: brown;
+}
+
+#dis-connect a:active {
+  color: green;
 }
