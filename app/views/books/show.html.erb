@@ -2,19 +2,7 @@
 
 <p> <%= @book.category.name %> </p>
 
-<%= form_tag "/books/#{@book.id}", method: "patch" do %>
-  <input type="text" name="title" value="<%= @book.title %>" />
-  <p> <%= @book.errors[:title].first %> </p>
-  <select name="category_id">
-    <option value="<%= @book.category.id %>"> <%= @book.category.name %> </option>
-    <% @categories.each do |category| %>
-      <% unless category.id == @book.category.id %>
-        <option value="<%= category.id %>"> <%= category.name %> </option>
-      <% end %>
-    <% end %>
-  </select>
-  <input type="submit" value="Modifier le livre" />
-<% end %>
+<%= render "books/form" %>
 
 <%= form_tag "/books/#{@book.id}", method: "delete" do %>
   <input type="submit" value="Supprimer le livre" />

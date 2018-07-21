@@ -4,13 +4,4 @@
   <p> <%= book_link book %> </p>
 <% end %>
 
-<%= form_tag "/books", method: "post" do %>
-  <input type="text", name="title" />
-  <p> <%= @book.errors[:title].first %> </p>
-  <select name="category_id">
-    <% @categories.each do |category| %>
-      <option value="<%= category.id %>"> <%= category.name %> </option>
-    <% end %>
-  </select>
-  <input type="submit" value="Ajouter le livre" />
-<% end %>
+<%= render "books/form" %>
