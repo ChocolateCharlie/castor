@@ -1,10 +1,10 @@
 <% if @current_user.try(:admin?) %>
   <h1> Liste des utilisateurs </h1>
-    <ul>
-      <% @users.each do |user| %>
-        <li> <%= user.name %> </li>
-      <% end %>
-    </ul>
+  <ul>
+    <% @users.each do |user| %>
+      <li> <%= user.name %> </li>
+    <% end %>
+  </ul>
 <% else %>
   <h1> Accès interdit </h1>
 <% end %>

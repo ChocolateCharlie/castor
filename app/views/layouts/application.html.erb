@@ -10,12 +10,20 @@
   </head>
 
   <body>
+    <% if @current_user %>
+      <p> <a href="/users/logout">Se déconnecter</a> </p>
+    <% else %>
+      <p> <a href="/users/login">S'identifier</a> </p>
+    <% end %>
+
     <div>
       <%= flash[:success] %>
       <%= flash[:failure] %>
       <%= flash[:info] %>
       <%= flash[:error] %>
     </div>
+
     <%= yield %>
+
   </body>
 </html>

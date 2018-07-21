@@ -14,10 +14,10 @@ class UsersController < ApplicationController
 
   def list
     if @current_user.try(:admin?)
+      @users = User.all
+    else
       flash[:error] = "Accès interdit"
       return redirect_to request.referrer || root_path
-    else
-      @users = User.all
     end
   end
 
