@@ -3,6 +3,9 @@ class BooksController < ApplicationController
     @books = Book.all
     @categories = Category.all
     @book = Book.new
+    if session[:user_id]
+      @current_user = User.find(session[:user_id])
+    end
   end
 
   def create
@@ -16,6 +19,9 @@ class BooksController < ApplicationController
       redirect_to "/books"
     else
       flash[:failure] = "Le livre n'a pas pu être créé."
+      if session[:user_id]
+        @current_user = User.find(session[:user_id])
+      end
       render 'index'
     end
   end
