@@ -1,15 +1,7 @@
 <h1> Liste des livres </h1>
 
 <% @books.each do |book| %>
-  <p>
-    <a href="/books/<%= book.id %>">
-      <% if book.category %>
-        <%= book.title %> (<%= book.category.name %>)
-      <% else %>
-        <%= book.title %>
-      <% end %>
-    </a>
-  </p>
+  <p> <%= book_link book %> </p>
 <% end %>
 
 <%= form_tag "/books", method: "post" do %>
