@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
 
+  def admin?
+    self.role == "admin"
+  end
+
   validates :name, presence: {
     message: "Le nom doit être renseigné."
   }

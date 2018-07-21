@@ -2,7 +2,7 @@
 
 <p> <%= @book.category.name %> </p>
 
-<% if @current_user.try(:role) == "admin" %>
+<% if @current_user.try(:admin?) %>
   <%= render "books/form" %>
   <%= form_tag "/books/#{@book.id}", method: "delete" do %>
     <input type="submit" value="Supprimer le livre" />

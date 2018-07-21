@@ -1,4 +1,4 @@
-<% if @current_user.try(:role) == "admin" %>
+<% if @current_user.try(:admin?) %>
   <h1> Liste des utilisateurs </h1>
     <ul>
       <% @users.each do |user| %>
