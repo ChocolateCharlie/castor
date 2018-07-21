@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'books#index'
+
   resources :books, only: [:index, :create, :show, :update, :destroy]
 
   get 'users/login' => 'users#login'

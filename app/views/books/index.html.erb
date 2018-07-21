@@ -12,4 +12,6 @@
   <p> <%= book_link book %> </p>
 <% end %>
 
-<%= render "books/form" %>
+<% if @current_user.try(:role) == "admin" %>
+  <%= render "books/form" %>
+<% end %>

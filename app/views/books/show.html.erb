@@ -2,10 +2,11 @@
 
 <p> <%= @book.category.name %> </p>
 
-<%= render "books/form" %>
-
-<%= form_tag "/books/#{@book.id}", method: "delete" do %>
-  <input type="submit" value="Supprimer le livre" />
+<% if @current_user.try(:role) == "admin" %>
+  <%= render "books/form" %>
+  <%= form_tag "/books/#{@book.id}", method: "delete" do %>
+    <input type="submit" value="Supprimer le livre" />
+  <% end %>
 <% end %>
 
 <p> <a href="/books">Retourner à l'index</a> </p>

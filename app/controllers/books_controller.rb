@@ -4,6 +4,7 @@ class BooksController < ApplicationController
   end
 
   def create
+    check_user_role("admin")
     @book = Book.new
     @book.title = params[:title]
     @book.category_id = params[:category_id]
@@ -21,6 +22,7 @@ class BooksController < ApplicationController
   end
 
   def update
+    check_user_role("admin")
     @book = Book.find(params[:id])
     if @book.update title: params[:title], category_id: params[:category_id]
       flash[:success] = "Le livre a été mis à jour."
@@ -34,8 +36,18 @@ class BooksController < ApplicationController
   end
 
   def destroy
+    check_user_role("admin")
     Book.find(params[:id]).destroy
     flash[:success] = "Le livre a été supprimé."
     redirect_to "/books"
+  end
+
+  private
+
+  def check_user_role (role)
+    if @current_user.try(:role) != role
+      flash[:error] = "Accès interdit"
+      return redirect_to request.referrer || root_path
+    end
   end
 end
