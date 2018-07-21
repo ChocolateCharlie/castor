@@ -2,11 +2,20 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     @categories = Category.all
+    @book = Book.new
   end
 
   def create
-    Book.create title: params[:title], category_id: params[:category_id]
-    redirect_to "/books"
+    @book = Book.new
+    @categories = Category.all
+    @books = Book.all
+    @book.title = params[:title]
+    @book.category_id = params[:category_id]
+    if @book.save
+      redirect_to "/books"
+    else
+      render 'index'
+    end
   end
 
   def show
@@ -15,8 +24,15 @@ class BooksController < ApplicationController
   end
 
   def update
-    Book.find(params[:id]).update title: params[:title], category_id: params[:category_id]
-    redirect_to "/books/#{params[:id]}"
+    @book = Book.find(params[:id])
+    if @book.update title: params[:title], category_id: params[:category_id]
+      redirect_to "/books/#{params[:id]}"
+    else
+      @categories = Category.all
+      @book.title = Book.find(params[:id]).title
+      @book.category = Book.find(params[:id]).category
+      render 'show'
+    end
   end
 
   def destroy
