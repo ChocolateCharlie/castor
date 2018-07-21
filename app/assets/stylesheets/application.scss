@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  background-image: url(asset-path("background_books.png"));
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
