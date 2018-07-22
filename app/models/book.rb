@@ -1,5 +1,6 @@
 class Book < ActiveRecord::Base
   belongs_to :category
+  belongs_to :author
 
   validates :title, presence: {
     message: "Le titre doit être renseigné."
