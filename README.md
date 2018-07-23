@@ -1,24 +1,8 @@
-# README
+# Castor
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Mini gestionnaire de livres réalisé dans le cadre des cours OpenClassrooms suivants :
 
-Things you may want to cover:
+    - Initiez-vous à Ruby on Rails
+    - Continuez avec Ruby on Rails
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+tous deux écrits par Julien Grillot
