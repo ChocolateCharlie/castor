@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   private
 
   def set_common_variables
+    @authors = Author.all
     @books = Book.all
     @categories = Category.all
   end

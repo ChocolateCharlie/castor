@@ -6,8 +6,9 @@ class BooksController < ApplicationController
   def create
     check_user_role("admin")
     @book = Book.new
-    @book.title = params[:title]
-    @book.category_id = params[:category_id]
+    @book.title = params[:book][:title]
+    @book.category_id = params[:book][:category_id]
+    @book.author_id = params[:book][:author_id]
     if @book.save
       flash[:success] = "Le livre a été créé."
       redirect_to "/books"
@@ -24,12 +25,13 @@ class BooksController < ApplicationController
   def update
     check_user_role("admin")
     @book = Book.find(params[:id])
-    if @book.update title: params[:title], category_id: params[:category_id]
+    if @book.update book_params
       flash[:success] = "Le livre a été mis à jour."
       redirect_to "/books/#{params[:id]}"
     else
       @book.title = Book.find(params[:id]).title
       @book.category = Book.find(params[:id]).category
+      @book.author = Book.find(params[:id]).author
       flash[:failure] = "Le livre n'a pas été mis à jour."
       render 'show'
     end
@@ -43,6 +45,10 @@ class BooksController < ApplicationController
   end
 
   private
+
+  def book_params
+    params.require(:book).permit(:title, :category_id, :author_id)
+  end
 
   def check_user_role (role)
     if @current_user.try(:role) != role

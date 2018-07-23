@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def check
-    @current_user = User.where(name: params[:name], password: params[:password]).first
+    @current_user = User.where(user_params).first
     if @current_user
       session[:user_id] = @current_user.id
       flash[:success] = "Bienvenue #{@current_user.name} !"
@@ -27,5 +27,11 @@ class UsersController < ApplicationController
   def logout
     session[:user_id] = nil
     redirect_to "/books"
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :password)
   end
 end

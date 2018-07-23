@@ -1,23 +1,38 @@
 <%= form_for @book do %>
-  <input type="text" name="title" value="<%= @book.title %>" />
+  <input type="text" name="book[title]" value="<%= @book.title %>" />
   <p class="wrong"> <%= @book.errors[:title].first %> </p>
 
-  <select name="category_id">
-    <% if @book.persisted? %>
+  <% if @book.persisted? %>
+    <select name="book[category_id]">
       <option value="<%= @book.category.id %>"> <%= @book.category.name %> </option>
       <% @categories.each do |category| %>
         <% unless category.id == @book.category.id %>
           <option value="<%= category.id %>"> <%= category.name %> </option>
         <% end %>
       <% end %>
-      </select>
-      <input type="submit" value="Modifier le livre" />
-    <% else %>
+    </select>
+    <select name="book[author_id]">
+      <option value="<%= @book.author.id %>"> <%= @book.author.name %> </option>
+      <% @authors.each do |author| %>
+        <% unless author.id == @book.author.id %>
+          <option value="<%= author.id %>"> <%= author.name %> </option>
+        <% end %>
+      <% end %>
+    </select>
+    <input type="submit" value="Modifier le livre" />
+
+  <% else %>
+    <select name="book[category_id]">
       <% @categories.each do |category| %>
         <option value="<%= category.id %>"> <%= category.name %> </option>
       <% end %>
-      </select>
-      <input type="submit" value="Ajouter le livre" />
-    <% end %>
-<% end %>
+    </select>
+    <select name="book[author]">
+      <% @authors.each do |author| %>
+        <option value="<%= author.id %>"> <%= author.name %> </option>
+      <% end %>
+    </select>
+    <input type="submit" value="Ajouter le livre" />
+  <% end %>
 
+<% end %>
