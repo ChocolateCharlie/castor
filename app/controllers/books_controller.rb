@@ -5,10 +5,7 @@ class BooksController < ApplicationController
 
   def create
     check_user_role("admin")
-    @book = Book.new
-    @book.title = params[:book][:title]
-    @book.category_id = params[:book][:category_id]
-    @book.author_id = params[:book][:author_id]
+    @book = Book.new book_params
     if @book.save
       flash[:success] = "Le livre a été créé."
       redirect_to "/books"
