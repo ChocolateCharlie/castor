@@ -4,5 +4,3 @@ Mini gestionnaire de livres réalisé dans le cadre des cours OpenClassrooms sui
 
     - Initiez-vous à Ruby on Rails
     - Continuez avec Ruby on Rails
-
-tous deux écrits par Julien Grillot
